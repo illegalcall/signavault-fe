@@ -8,7 +8,6 @@ import { onboard as web3Onboard } from '@/lib/onboard';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [domLoaded, setDomLoaded] = useState(false);
-  console.log('🚀 ~ file: index.tsx:8 ~ web3Onboard:', web3Onboard);
 
   useEffect(() => {
     setDomLoaded(true);

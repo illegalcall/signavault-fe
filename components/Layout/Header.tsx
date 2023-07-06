@@ -9,7 +9,6 @@ import { useConnectWallet, useSetChain } from '@web3-onboard/react';
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
-  const [walletAddress, setWalletAddress] = useState('');
 
   useEffect(() => {
     setTheme('dark');
@@ -31,30 +30,10 @@ const Header = () => {
     setPrimaryWallet, // function that can set the primary wallet and/or primary account within that wallet. The wallet that is set needs to be passed in for the first parameter and if you would like to set the primary account, the address of that account also needs to be passed in
   ] = useConnectWallet();
 
-  // const [
-  //   {
-  //     chains, // the list of chains that web3-onboard was initialized with
-  //     connectedChain, // the current chain the user's wallet is connected to
-  //     settingChain, // boolean indicating if the chain is in the process of being set
-  //   },
-  //   setChain, // function to call to initiate user to switch chains in their wallet
-  // ] = useSetChain();
-  // console.log('🚀 ~ file: Header.tsx:36 ~ Header ~ chains:', chains);
-
-  const handleConnectWallet = () => {
-    console.log('initiation connect wallet');
-    connect().then((value) => {
-      console.log('🚀 ~ file: Header.tsx:36 ~ connect ~ value:', value);
-      setWalletAddress(value[0].accounts[0].address);
-    });
-  };
-
-  const handleDisonnectWallet = () => {
-    console.log('initiation disconnect wallet');
-    disconnect({ label: 'Idontknow' }).then((value) => {
-      console.log('in disconnect ', value);
-      setWalletAddress('');
-    });
+  const toggleWallet = () => {
+    if (!wallet) {
+      connect();
+    } else disconnect(wallet);
   };
 
   return (
@@ -63,23 +42,15 @@ const Header = () => {
         <h3>Logo</h3>
       </div>
       <div className="flex gap-5">
-        {walletAddress ? (
-          <Button
-            className="wallet"
-            variant={'default'}
-            onClick={handleDisonnectWallet}
-          >
-            Disconnect
-          </Button>
-        ) : (
-          <Button
-            className="wallet"
-            variant={'default'}
-            onClick={handleConnectWallet}
-          >
-            Connect Wallet
-          </Button>
-        )}
+        <Button
+          className="wallet"
+          variant={'default'}
+          onClick={toggleWallet}
+          disabled={connecting}
+        >
+          {connecting ? 'connecting' : wallet ? 'Disconnect' : 'Connect Wallet'}
+        </Button>
+
         <span
           className="flex align-middle cursor-pointer"
           onClick={toggleTheme}
