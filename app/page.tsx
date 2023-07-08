@@ -17,12 +17,12 @@ export default function Home () {
   const { theme } = useTheme();
 
   return (
-    <main className="flex flex-col items-center justify-center w-[600] py-20">
+    <main className="flex flex-col items-center justify-center w-[1100px] py-20 mx-auto">
       <h3 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">Your Vaults</h3>
       <div
         className={`flex flex-col items-center justify-center gap-10 border-4 ${
           theme === 'dark' ? 'border-white' : 'border-black'
-        } w-[600px] h-[600px]`}
+        } w-3/4 h-[700px]`}
       >
         <Image
           src="/vault.jpeg"
