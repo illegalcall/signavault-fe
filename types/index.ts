@@ -13,7 +13,7 @@ export interface IOwner {
   id: string;
   name: string;
   avatar?: string;
-  address: string;
+  publicKey: string;
 }
 
 export type ITransactionBase = {

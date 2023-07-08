@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { truncate } from '@/lib/utils';
 import { TransactionStatus, TransactionType, TransactionTypeLabel } from '@/types/enums';
+import { ItemPrimary, ItemSecondary } from './Items';
 
 interface Props {
   type: TransactionType;
@@ -18,24 +19,6 @@ interface Props {
   executedAt?: string;
   rejections: number;
 }
-
-const ItemPrimary = ({ title, value }: { title: string; value: string }) => {
-  return (
-    <div className="flex gap-1 items-center flex-col">
-      <span>{value}</span>
-      <span className="text-sm text-muted-foreground">{title}</span>
-    </div>
-  );
-};
-
-const ItemSecondary = ({ title, value }: { title: string; value: string }) => {
-  return (
-    <div className="flex justify-between">
-      <span className="text-sm text-muted-foreground">{title}</span>
-      <span>{value}</span>
-    </div>
-  );
-};
 
 const Transaction: React.FC<Props> = ({
   type,

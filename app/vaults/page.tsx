@@ -26,18 +26,12 @@ const VaultsPage = () => {
       </div>
       <div className="vault-container w-full flex flex-col gap-5">
         {vaults.map(({ id, name, owners, balance, currency }) => (
-          <Vault
-            key={id}
-            id={id}
-            name={name}
-            owners={owners}
-            balance={balance}
-            currency={currency}
-          />
+          <Vault key={id} id={id} name={name} owners={owners} balance={balance} currency={currency} />
         ))}
       </div>
     </main>
   );
 };
 
-export default withAuth(VaultsPage);
+// export default withAuth(VaultsPage);
+export default VaultsPage;

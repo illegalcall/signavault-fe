@@ -7,17 +7,17 @@ import { AiFillEdit } from '@react-icons/all-files/ai/AiFillEdit';
 interface Props {
   id: string;
   name: string;
-  address: string;
+  publicKey: string;
 }
 
-const Owner: React.FC<Props> = ({ name, address }) => {
+const Owner: React.FC<Props> = ({ name, publicKey }) => {
   return (
     <div className="vault-container w-full flex flex-col gap-5">
       <div className="w-full flex justify-between items-center border-2 h-[70px] px-8 rounded-3xl cursor-pointer border-slate-50 hover:border-red-500">
         <span className="flex gap-4">
           <div className="flex flex-col">
             <span>{name}</span>
-            <span>{address}</span>
+            <span>{publicKey}</span>
           </div>
         </span>
         <div className="flex gap-2">
