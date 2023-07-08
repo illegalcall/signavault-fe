@@ -5,9 +5,7 @@ import Owner from './Owner';
 import { dummyOwners } from './consts';
 import withAuth from '@/components/withAuth';
 
-const OwnersPage = () => {
-  console.log('onwers');
-
+const OwnersPage: React.FC = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-between">

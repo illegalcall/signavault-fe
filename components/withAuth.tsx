@@ -1,19 +1,11 @@
+/* eslint-disable react/display-name */
 'use client';
-// hoc/withAuth.js
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useConnectWallet } from '@web3-onboard/react';
 
-const withAuth = (
-  WrappedComponent: React.FunctionComponent<{
-    comp: React.ElementType;
-  }>
-) => {
-  return (
-    props: React.JSX.IntrinsicAttributes & {
-      comp: React.ElementType;
-    }
-  ) => {
+const withAuth = (WrappedComponent: React.FunctionComponent) => {
+  return (props: any) => {
     // checks whether we are on client / browser or server.
     if (typeof window !== 'undefined') {
       const Router = useRouter();

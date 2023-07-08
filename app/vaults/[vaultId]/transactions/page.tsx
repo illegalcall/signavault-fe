@@ -10,6 +10,7 @@ const TransactionsPage = () => {
       {transactions.map((transaction) => {
         return (
           <Transaction
+            key={transaction.id}
             amount={transaction.amount}
             to={transaction.to}
             status={transaction.status}
