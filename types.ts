@@ -67,6 +67,13 @@ export enum ITransactionStatus {
   Failed = 'failed',
 }
 
+export interface IOwner {
+  id: string;
+  name: string;
+  avatar?: string;
+  address: string;
+}
+
 // BE MODELS
 
 /*
