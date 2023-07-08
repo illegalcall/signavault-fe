@@ -40,5 +40,4 @@ const VaultsPage = () => {
   );
 };
 
-export default VaultsPage;
-// export default withAuth(VaultsPage);
+export default withAuth(VaultsPage);

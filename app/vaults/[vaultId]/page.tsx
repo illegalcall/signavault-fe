@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import withAuth from '@/components/withAuth';
 import React from 'react';
 
 const DashboardPage = () => {
@@ -21,4 +22,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default withAuth(DashboardPage);

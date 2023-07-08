@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import React from 'react';
 import Owner from './Owner';
 import { dummyOwners } from './consts';
+import withAuth from '@/components/withAuth';
 
 const OwnersPage = () => {
   console.log('onwers');
@@ -25,4 +26,4 @@ const OwnersPage = () => {
   );
 };
 
-export default OwnersPage;
+export default withAuth(OwnersPage);
