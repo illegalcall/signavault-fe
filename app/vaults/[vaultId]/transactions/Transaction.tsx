@@ -1,14 +1,16 @@
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { ITransactionStatus } from '@/types';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { truncate } from '@/lib/utils';
+import { TransactionStatus, TransactionType, TransactionTypeLabel } from '@/types/enums';
 
 interface Props {
+  type: TransactionType;
   amount: number;
   to: string;
-  status: ITransactionStatus;
+  status: TransactionStatus;
   confirmations: number;
   author: string;
   createdAt: string;
@@ -36,6 +38,7 @@ const ItemSecondary = ({ title, value }: { title: string; value: string }) => {
 };
 
 const Transaction: React.FC<Props> = ({
+  type,
   amount,
   to,
   status,
@@ -57,26 +60,11 @@ const Transaction: React.FC<Props> = ({
     >
       <AccordionItem value="item-1">
         <AccordionTrigger>
-          <div
-            className="w-full flex justify-between items-center h-[70px] pr-3"
-            // onClick={() => router.push(`/vaults/${id}`)}
-          >
-            {/* <div className="flex gap-1 items-center flex-col">
-              <span>{amount}</span>
-              <span className="text-sm text-muted-foreground">amount</span>
-            </div> */}
-            <ItemPrimary
-              title={'Amount'}
-              value={`${amount}`}
-            />
-            <ItemPrimary
-              title={'Recepient'}
-              value={truncate(to, 4, 4, 11)}
-            />
-            <ItemPrimary
-              title={'Status'}
-              value={status}
-            />
+          <div className="w-full flex justify-between items-center h-[70px] pr-3">
+            <ItemPrimary title={'Type'} value={TransactionTypeLabel[type]} />
+            <ItemPrimary title={'Amount'} value={`${amount}`} />
+            <ItemPrimary title={'Recepient'} value={truncate(to, 4, 4, 11)} />
+            <ItemPrimary title={'Status'} value={status} />
           </div>
         </AccordionTrigger>
         <AccordionContent>
@@ -91,18 +79,9 @@ const Transaction: React.FC<Props> = ({
               </CardHeader>
               <CardContent className="text-lg">
                 <div className="flex flex-col gap-2">
-                  <ItemSecondary
-                    title={'Author'}
-                    value={truncate(author, 4, 4, 11)}
-                  />
-                  <ItemSecondary
-                    title={'Created At'}
-                    value={createdAt}
-                  />
-                  <ItemSecondary
-                    title={'Executed on'}
-                    value={executedAt ?? 'n/a'}
-                  />
+                  <ItemSecondary title={'Author'} value={truncate(author, 4, 4, 11)} />
+                  <ItemSecondary title={'Created At'} value={createdAt} />
+                  <ItemSecondary title={'Executed on'} value={executedAt ?? 'n/a'} />
                 </div>
               </CardContent>
             </Card>
@@ -134,10 +113,7 @@ const Transaction: React.FC<Props> = ({
                 </Card>
               </CardContent>
               <CardFooter className="flex justify-between gap-3">
-                <Button
-                  className="w-full rounded-xl"
-                  variant="outline"
-                >
+                <Button className="w-full rounded-xl" variant="outline">
                   Reject
                 </Button>
                 <Button className="w-full rounded-xl">Confirm</Button>

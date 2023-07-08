@@ -1,7 +1,7 @@
 'use client';
 
 import { handleRoute } from '@/lib/utils';
-import { Routes } from '@/types';
+import { Routes } from '@/types/enums';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 

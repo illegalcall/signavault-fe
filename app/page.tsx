@@ -4,9 +4,9 @@ import { useConnectWallet } from '@web3-onboard/react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { use, useEffect } from 'react';
+import { useEffect } from 'react';
 
-export default function Home () {
+export default function Home() {
   const [{ wallet }] = useConnectWallet();
   const router = useRouter();
 
@@ -24,12 +24,7 @@ export default function Home () {
           theme === 'dark' ? 'border-white' : 'border-black'
         } w-3/4 h-[700px]`}
       >
-        <Image
-          src="/vault.jpeg"
-          width={200}
-          height={200}
-          alt={''}
-        />
+        <Image src="/vault.jpeg" width={200} height={200} alt={''} />
         <p className="text-lg line-clamp-2">Connect your wallet to see which Vaults you are in</p>
         <ConnectWallet />
       </div>
